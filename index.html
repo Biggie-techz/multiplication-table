@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplication Tables</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+            font-size: 1.25rem;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            margin: auto;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .first,
+        .second {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        input {
+            width: 9rem;
+            padding: 0.25rem;
+        }
+
+        ::-webkit-outer-spin-button,
+        ::-webkit-inner-spin-button {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Multiplication Tables</h1>
+    <div class="first">
+        <label for="input1">Enter the first number for the multiplication table:</label>
+        <input type="number" id="input1" placeholder="Start number">
+    </div>
+
+    <div class="second">
+        <label for="input2">Enter the last number for the multiplication table:</label>
+        <input type="number" id="input2" placeholder="End number">
+    </div>
+
+    <button onclick="generateTables()">Generate Tables</button>
+
+    <div id="output"></div>
+
+
+</body>
+
+<script>
+    function generateTables() {
+        const input1 = Number(document.getElementById('input1').value);
+        const input2 = Number(document.getElementById('input2').value);
+        let result = '';
+        if (input1 < input2) {
+            for (let i = input1; i <= input2; i++) {
+                result += `<h3>Multiplication Table for ${i}</h3>`;
+                for (let index = 1; index <= 12; index++) {
+                    result += `${i} x ${index} = ${i * index}<br>`;
+                }
+                if (input1 == '' || input2 == '') {
+                    result = 'Please enter a number';
+                } else {
+                    result += '<br>';
+                }
+            }
+        } else {
+            for (let i = input1; i >= input2; i--) {
+                result += `<h3>Multiplication Table for ${i}</h3>`;
+                for (let index = 1; index <= 12; index++) {
+                    result += `${i} x ${index} = ${i * index}<br>`;
+                }
+                if (input1 == '' || input2 == '') {
+                    result = 'Please enter a number';
+                } else {
+                    result += '<br>';
+                }
+            }
+        }
+        document.getElementById('input1').value = ''
+        document.getElementById('input2').value = ''
+        document.getElementById('output').innerHTML = result;
+    }
+</script>
+
+</html>
