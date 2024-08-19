@@ -36,8 +36,14 @@
     console.log(`Median age is ${median}`);
 
     // Average age
-    let sum = ages.reduce((a, b) => a + b, 0)
-    console.log(sum);
+    // let sum = ages.reduce((a, b) => a + b, 0)
+    // console.log(sum);
+
+    let sum = 0
+    for (let index = 0; index < ages.length; index++) {
+        sum += ages[index]
+    }
+    console.log(`Sum is ${sum}`);
 
     let average = sum / ages.length
 
